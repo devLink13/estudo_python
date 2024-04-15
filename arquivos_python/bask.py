@@ -38,4 +38,5 @@ raiz_delta = delta**(1/2)
 x1 = (b_1 + raiz_delta)/(2*a)
 x2 = (b_1 - raiz_delta)/(2*a)
 
-print('o valor de x1 é {}\n e o valor de x2 é {}'.format(x1, x2))
+# usar essa formatação permite definir o número com float sem casas decimais
+print('o valor de x1 é {:.0f}\n e o valor de x2 é {:.0f}'.format(x1, x2))
