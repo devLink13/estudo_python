@@ -1,0 +1,8 @@
+A biblioteca random do Python fornece várias funções para gerar números aleatórios e realizar operações relacionadas. Aqui estão algumas das principais funções123:
+
+random(): Retorna um número real aleatório entre 0 e 1123.
+randint(a, b): Retorna um número inteiro aleatório entre a e b (inclusive)123.
+choice(seq): Retorna um elemento aleatório de uma sequência123.
+shuffle(seq): Embaralha os elementos de uma sequência123.
+sample(seq, k): Retorna uma lista com k elementos aleatórios de uma sequência, sem repetições123.
+Lembre-se de que você precisa importar o módulo random antes de usar essas funções. Você pode fazer isso com o comando import random.
