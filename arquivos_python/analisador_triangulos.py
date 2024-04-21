@@ -54,7 +54,15 @@ else:
 
 
 if condicao_global == True:
-    print('deu certo')
+    #print('deu certo')
+    
+    #testes para saber qual triângulo é
+    if a == b and b == c and a == c:
+        print('triangulo equilatero')
+    elif (a == b and a != c) or (a == c and a != b) or (b == c and b != a):
+        print('triangulo isóceles')
+    elif a != b != c:
+        print('triângulo escaleno')            
 
 
 
