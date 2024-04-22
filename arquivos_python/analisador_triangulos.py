@@ -1,4 +1,4 @@
-#criar um projeto que analise todosos dados de um triângulo
+# criar um projeto que analise todosos dados de um triângulo
 
 """
 
@@ -14,7 +14,7 @@
 
     – ISÓSCELES: dois lados iguais, um diferente
 
-    – ESCALENO: todos os lados diferentes    
+    – ESCALENO: todos os lados diferentes
 
 3. entregar ao usuário todos os resultados referentes à geometria do triângulo.
     - calculo de área
@@ -41,30 +41,49 @@ a = float(input('digite o primeiro lado: '))
 b = float(input('digite o segundo lado: '))
 c = float(input('digite o terceiro lado:'))
 
-condicao_global : None #criando uma variável global sem atribuir valor
+condicao_global: None  # criando uma variável global sem atribuir valor
 # condicao_global = bool poderia ser assim também
 
+# variavel global para armazenar o valor do tipo do triangulo, aceita 'equilatero' 'isoceles' ou 'escaleno'
+tipo_triangulo = str
+# print(type(tipo_triangulo))
+
 if a < (b+c) and b < (a+c) and c < (a+b):
-    print('\033[2;32mOs segmentos {0:.2f}, {1:.2f} e {2:.2f} formam um triângulo, vamos continuar!\033[m'.format(a,b,c))
+    print(
+        '\033[2;32mOs segmentos inseridos formam um triângulo, vamos continuar!\033[m')
     condicao_global = True
 
 else:
     condicao_global = False
-    print('\033[2;31mOs segmentos {0:.2f}, {1:.2f} e {2:.2f} não formam um triângulo. Encerrando o programa!\033[m'.format(a,b,c))
+    print(
+        '\033[2;31mOs segmentos inseridos não formam um triângulo. Encerrando o programa!\033[m')
 
 
 if condicao_global == True:
-    #print('deu certo')
-    
-    #testes para saber qual triângulo é
+    # print('deu certo')
+
+    # testes para saber qual triângulo é
     if a == b and b == c and a == c:
-        print('triangulo equilatero')
+        tipo_triangulo = 'equilátero'
     elif (a == b and a != c) or (a == c and a != b) or (b == c and b != a):
-        print('triangulo isóceles')
+        tipo_triangulo = 'isóceles'
     elif a != b != c:
-        print('triângulo escaleno')            
+        tipo_triangulo = 'escaleno'
 
+    # calculos matemáticos
+    # calculo do perímetro e semi perímetro
+    per = a+b+c
+    sp = per/2
 
+    # formula de heron
+    Area = sqrt(sp*(sp-a)*(sp-b)*(sp-c))
+    # formatação para 'fstring' para printar 'A' com duas casas decimais. o f é de float
+    # print(f'{A:.2f}')
 
+    # formatação dos dados no terminal para exibição
 
-
+    print('''********* DADOS DO TRIÂNGULO INSERIDO **************
+* 1. SEGMENTOS INSERIDOS: {0:.>15.2f}, {1:.2f} e {2:.2f}
+* 2. TIPO DE TRIÂNGULO: {3:.>28}
+* 3. PERÍMETRO DO TRIÂNGULO: {4:.>23.2f}
+* 4. ÁREA DO TRIÂNGULO: {5:.>28.2f} '''.format(a, b, c, tipo_triangulo.upper(), per, Area))
