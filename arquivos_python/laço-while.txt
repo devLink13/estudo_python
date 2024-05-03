@@ -1,0 +1,76 @@
+O que é o laço while? O laço while é uma estrutura de controle de fluxo fundamental em Python12. Ele permite executar um bloco de código repetidamente enquanto uma condição especificada é verdadeira12.
+
+Como funciona o laço while? Aqui está a sintaxe básica do laço while3:
+
+Python
+
+while condição:
+    bloco de código
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+A condição é verificada antes da execução do bloco de código. Se a condição for verdadeira, o bloco de código é executado3. O laço while continua a testar a condição e a executar o bloco de código até que a condição se torne falsa45.
+
+Quando usar o laço while? O laço while é incrivelmente útil para situações onde você precisa repetir uma ação, mas o número exato de iterações não é conhecido antes de iniciar o laço12. Aqui estão alguns exemplos de casos de uso reais de laços while4:
+
+Entrada do usuário: quando é solicitado ao usuário que insira algum dado, devemos verificar se o valor inserido é válido4.
+Pesquisa: pesquisar por um elemento em uma estrutura de dados é outro caso de uso perfeito para um laço while4.
+Jogos: em um jogo, um laço while pode ser usado para manter a lógica principal do jogo em execução até que o jogador perca ou que o jogo termine4.
+Exemplo de uso do laço while Aqui está um exemplo simples de como usar o laço while para imprimir os números de 1 a 105:
+
+Python
+
+numero = 1
+while numero <= 10:
+    print(numero)
+    numero += 1
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+Neste exemplo, a variável numero começa em 1 e é incrementada em 1 a cada iteração do laço. O laço continua até que numero seja maior que 105.
+
+
+
+1. Contagem regressiva:
+
+Python
+
+numero = 10
+while numero > 0:
+    print(numero)
+    numero -= 1
+print("Decolagem!")
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+Este código imprime os números de 10 a 1 em ordem decrescente, e então imprime “Decolagem!”.
+
+2. Solicitando entrada do usuário até obter uma resposta válida:
+
+Python
+
+resposta = ""
+while resposta.lower() != "sim":
+    resposta = input("Você gostaria de continuar? (sim/não): ")
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+Este código continuará perguntando “Você gostaria de continuar?” até que o usuário responda com “sim”.
+
+3. Loop infinito com condição de saída:
+
+Python
+
+while True:
+    resposta = input("Digite 'sair' para sair: ")
+    if resposta.lower() == 'sair':
+        break
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+Este é um loop infinito que só terminará quando o usuário digitar ‘sair’.
+
+4. Usando o laço while para criar um menu interativo:
+
+Python
+
+opcao = 0
+while opcao != 3:
+    print("1. Opção 1")
+    print("2. Opção 2")
+    print("3. Sair")
+    opcao = int(input("Escolha uma opção: "))
+Código gerado por IA. Examine e use com cuidado. Mais informações em perguntas frequentes.
+Este código apresenta um menu ao usuário e continua apresentando o menu até que o usuário escolha a opção 3 para sair.
+
+Lembre-se, é importante ter cuidado ao usar laços while, especialmente com loops infinitos, pois eles podem causar que seu programa fique preso em um loop se a condição de saída nunca for atendida. Sempre certifique-se de que há uma maneira de o loop terminar.

@@ -1,0 +1,75 @@
+Os principais operadores em Python são divididos em várias categorias:
+
+1. Operadores Aritméticos12:
+
++ (Adição): Realiza a soma entre operandos12.
+- (Subtração): Realiza a subtração entre operandos12.
+* (Multiplicação): Realiza a multiplicação entre operandos12.
+/ (Divisão): Realiza a divisão entre operandos12.
+// (Divisão inteira): Realiza a divisão entre operandos e a parte decimal do resultado12.
+% (Módulo): Retorna o resto da divisão entre operandos12.
+** (Exponenciação): Retorna um número elevado à potência de outro12.
+2. Operadores Lógicos1:
+
+and: “E” lógico1.
+or: “OU” lógico1.
+not: “NÃO” lógico1.
+3. Operadores Relacionais (de comparação)1:
+
+<: Menor que1.
+>: Maior que1.
+<=: Menor ou igual a1.
+>=: Maior ou igual a1.
+==: Igual a1.
+!=: Diferente de1.
+4. Operadores de Atribuição2:
+
+=: Atribui um valor a uma variável2.
++=: Adiciona e atribui2.
+-=: Subtrai e atribui2.
+*=: Multiplica e atribui2.
+/=: Divide e atribui2.
+//=: Divide inteiramente e atribui2.
+%=: Calcula o módulo e atribui2.
+**=: Eleva à potência e atribui2.
+5. Operadores de Identidade2:
+
+is: Retorna verdadeiro se duas variáveis apontam para o mesmo objeto2.
+is not: Retorna verdadeiro se duas variáveis não apontam para o mesmo objeto2.
+6. Operadores de Associação2:
+
+in: Retorna verdadeiro se uma sequência com o valor especificado é encontrada no objeto2.
+not in: Retorna verdadeiro se uma sequência com o valor especificado não é encontrada no objeto2.
+
+
+
+
+EXEMPLOS:
+
+Operadores de Identidade:
+
+Os operadores de identidade em Python são usados para comparar a memória dos objetos. Eles são: is e is not.
+
+Python
+
+# Exemplo de uso do operador 'is'
+a = [1, 2, 3]
+b = a
+print(a is b)  # Isso retornará True, pois 'a' e 'b' apontam para o mesmo objeto
+
+# Exemplo de uso do operador 'is not'
+c = [1, 2, 3]
+print(a is not c)  # Isso retornará True, pois 'a' e 'c' não apontam para o mesmo objeto
+
+Operadores de Associação:
+
+Os operadores de associação em Python são usados para testar se uma sequência é apresentada em um objeto. Eles são: in e not in.
+
+Python
+
+# Exemplo de uso do operador 'in'
+lista = [1, 2, 3, 4, 5]
+print(3 in lista)  # Isso retornará True, pois 3 está na lista
+
+# Exemplo de uso do operador 'not in'
+print(6 not in lista)  # Isso retornará True, pois 6 não está na lista
