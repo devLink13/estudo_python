@@ -25,6 +25,7 @@ termo = a1
 
 # variavel da quantidade de termos, iniciar com 10
 qtd = 10
+qtd_total = 0
 
 # variavel de controle de laço
 condicao = True
@@ -53,7 +54,7 @@ while cont < qtd:
         # verifica se o número digitado foi 0, zero acaba o programa
         if num == 0:
             print('FINALIZANDO PA, obrigado!')
+            qtd_total = qtd
             qtd = 0
 
-
-print('FIM.')
+print('FIM. FORAM MOSTRADOS {0} TERMOS DA PA INFORMADA'.format(qtd_total))
