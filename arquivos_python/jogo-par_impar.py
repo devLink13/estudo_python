@@ -17,68 +17,46 @@ ALGORITMO:
 import random
 from time import sleep
 
-escolha_pc = 0
-num_pc = 0
-
-numero_par = ['0', '2', '4']
-numero_impar = ['1', '3', '5']
-
-cont = 0
+impar_par = 'PAR'
 
 while True:
 
-    cont += 1
+    escolha_jogador = input(
+        'ESCOLHA IMPAR OU PAR [1- IMPAR / 2 - PAR / SAIR - PARA PARAR]: ').upper()
 
-    # SOLICITA A ENTRADA DE PAR OU IMPAR DO USUÁRIO
-    escolha_usuario = input(
-        'SELECIONE IMPAR OU PAR [1 - IMPAR / 2 - PAR / SAIR]: ').strip().upper()
-
-    if escolha_usuario == 'SAIR':
+    if escolha_jogador == 'SAIR':
         break
 
-    # verificar se a escolha de impar ou par foi correta
     while True:
-        if escolha_usuario == '1' or escolha_usuario == '2':
-            # print('dado valido')
+        if escolha_jogador == '1' or escolha_jogador == '2':
             break
         else:
-            escolha_usuario = input(
-                'DADO INVÁLIDO, POR FAVOR DIGITE 1 OU 2: ')
+            escolha_jogador = input(
+                'ESCOLHA UMA OPÇÃO VÁLIDA, DIGITE [1 - IMPAR / 2 - PAR]: ')
 
-    if escolha_usuario == '1':
-        # SOLICITA O NÚMERO ESCOLHIDO PELO USUÁRIO
-        num_usuario = input('ESCOLHA UM NÚMERO IMPAR ENTRE 1 E 5: ')
+    num_jogador = input('DIGITE UM NÚMERO ENTRE 0 E 5: ')
 
-        while True:
-            if num_usuario in numero_impar:
-                # print('digitou numero impar')
-                break
-            else:
-                num_usuario = input(
-                    'VOCÊ DEVE DIGITAR UM NÚMERO IMPAR, OPÇOES [1,3,5]: ')
+    while True:
+        if int(num_jogador) in range(0, 6):
+            break
+        else:
+            num_jogador = input(
+                'NUMERO INVÁLIDO, VOCÊ DEVE DIGITAR UM NÚMERO ENTRE 0 E 5: ')
 
-    elif escolha_usuario == '2':
-        # SOLICITA O NÚMERO ESCOLHIDO PELO USUÁRIO
-        num_usuario = input('ESCOLHA UM NÚMERO PAR ENTRE 0 E 5: ')
+    num_pc = random.randint(0, 5)
+    soma = int(num_jogador) + num_pc
 
-        while True:
-            if num_usuario in numero_par:
-                # print('digitou numero par')
-                break
-            else:
-                num_usuario = input(
-                    'VOCÊ DEVE DIGITAR UM NÚMERO PAR, OPÇOES [0,2,4]: ')
+    if (soma % 2) == 0:
+        impar_par = 'PAR'
+    elif (soma % 2) != 0:
+        impar_par = 'IMPAR'
 
-    escolha_usuario = int(escolha_usuario)
-    num_usuario = int(num_usuario)
-
-    if escolha_usuario == 1:
-        escolha_pc = 2
-        num_pc = random.choice(numero_par)
-        print(f'o pc escolheu {num_pc}')
-    elif escolha_usuario == 2:
-        escolha_pc = 1
-        num_pc = random.choice(numero_impar)
-        print(f'o pc escolheu {num_pc}')
-
-# TERMINAR A LÓGICA DE APRESENTAÇÃO DO VENCEDOR
+    if escolha_jogador == '2' and (soma % 2) == 0:
+        print(f'O JOGADOR ESCOLHEU {num_jogador} E O COMPUTADOR ESCOLHEU {
+              num_pc}, A SOMA FOI {soma} QUE É {impar_par}. O JOGADOR VENCEU!')
+    elif escolha_jogador == '1' and (soma % 2) != 0:
+        print(f'O JOGADOR ESCOLHEU {num_jogador} E O COMPUTADOR ESCOLHEU {
+              num_pc}, A SOMA FOI {soma} QUE É {impar_par}. O JOGADOR VENCEU!')
+    else:
+        print(f'O JOGADOR ESCOLHEU {num_jogador} E O COMPUTADOR ESCOLHEU {
+              num_pc}, A SOMA FOI {soma} QUE É {impar_par}. O COMPUTADOR VENCEU!')
