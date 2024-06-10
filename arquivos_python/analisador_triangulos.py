@@ -1,4 +1,4 @@
-# criar um projeto que analise todosos dados de um triângulo
+ # criar um projeto que analise todosos dados de um triângulo
 
 """
 
@@ -21,7 +21,8 @@
     - caclulo de perímetro
 
 
-4. quando se sabe as medidas de todos lados de um triângulo, pode ser usada a fórmula de héron para calcular
+4. quando se sabe as medidas de to
+dos lados de um triângulo, pode ser usada a fórmula de héron para calcular
 a área do triângulo, seja ele qual for.
     formula de heron: A = sqrt (p(p-a)(p-b)(p-c))
                         p = (a+b+c)/2 (semi perímetro)
