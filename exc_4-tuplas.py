@@ -13,7 +13,7 @@ while True:
     print(f'o menor número da tupla é {min(numeros)}')
     print(f'o maior número da tupla é {max(numeros)}')
     print('-'*80)
-    sleep(1)
+    sleep(0.5)
 
     if keyboard.is_pressed('s'):
         print('interrupção por teclado.')
