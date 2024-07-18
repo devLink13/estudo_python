@@ -1,0 +1,218 @@
+# CRIEI UM ARQUIVO PARA ARMAZENAR INFORMAÇÕES SOBRE FORMATAÇÃO DE STRINGS EM PYTHON
+
+1) Marcador de posição
+    Forma de formatação de strings mais antiga na linguagem. Atualmente, se recomenda utilizar as outras formas apresentadas mais adiante no artigo. No entanto, como ainda há muito código legado por aí, é importante saber como utilizar.
+
+- Como o nome sugere, utiliza-se de marcadores de posição, como %s, no interior da string. Por exemplo:
+
+print('Um texto vai ser colocado %s' % 'aqui')
+Um texto vai ser colocado aqui
+
+- Quando é necessário mais de uma inserção, uma tupla é passada com cada inserção na ordem que deve aparecer na string:
+
+print('Um texto vai ser colocado %s, e %s também' % ('aqui', 'mais aqui'))
+Um texto vai ser colocado aqui, e mais aqui também
+
+- Por vezes é necessário passar uma string que possui significado para o interpretador da linguagem, mas que queremos que o interpretador trate como uma string normal. Chamamos esses casos de raw strings, literalmente strings “cruas”. Por exemplo, \t em Python é a representação de espaço da tecla TAB. Caso queiramos que seja exibido literalmente \t ao invés do espaço, indicamos com %r, onde o r é para indicar raw string:
+
+print('Segue o espaço do TAB: \t. Agora a representação crua: %r.' % '\t')
+Segue o espaço do TAB: 	. Agora a representação crua: '\t'.
+
+2) Lidando com números
+    No caso de querer uma representação fiel do número passado, utiliza-se %s para que o mesmo seja convertido para string. Mas manipulações podem ser feitas, como truncamento para inteiro e mostrar o sinal:
+
+num = 13.744
+
+print('Números como %s são convertidos para string' % num)
+print('Também podem ser representados como inteiros: %d; repare que sem arredondamento' % num)
+print('Mostrando o sinal em inteiros: %+d' % num)
+print('Mostrando o sinal em floats: %+f' % num)
+
+Números como 13.744 são convertidos para string
+Também podem ser representados como inteiros: 13; repare que sem arredondamento
+Mostrando o sinal em inteiros: +13
+Mostrando o sinal em floats: +13.744000
+
+- Observe acima que a representação de float ficou com mais decimais que o número passado. Podemos modificar esta representação com x.yf, onde x é o mínimo de caracteres e y, as casas decimais:
+
+print('Mínimo de 5 caracteres com 2 casas decimais: %5.2f' % num)
+print('Mínimo de 1 caracteres com 0 casas decimais: %1.0f (observe o arredondamento)' % num)
+print('Mínimo de 1 caracteres com 5 casas decimais: %1.5f' % num)
+print('Mínimo de 10 caracteres com 2 casas decimais: %10.2f' % num)
+print('Mínimo de 10 caracteres com 2 casas decimais: %+10.2f (com sinal)' % num)
+
+Mínimo de 5 caracteres com 2 casas decimais: 13.74
+Mínimo de 1 caracteres com 0 casas decimais: 14 (observe o arredondamento)
+Mínimo de 1 caracteres com 5 casas decimais: 13.74400
+Mínimo de 10 caracteres com 2 casas decimais:      13.74
+Mínimo de 10 caracteres com 2 casas decimais:     +13.74 (com sinal)
+
+3) Método format
+Forma introduzida no Python 3.0 e que possui mais flexibilidade e legibilidade que a maneira apresentada anteriormente.
+
+Tendo apenas uma inserção, fica:
+
+print('Vai entrar um texto {}.'.format('aqui'))
+Vai entrar um texto aqui.
+
+- Uma grande melhoria do format é poder escolher a ordem de inserção e trabalhar com variáveis:
+
+print('Controlando {2} {1}{0}'.format('!', 'ordem', 'a'))
+print('Primeiro: {a}; Segundo: {b}; Terceiro: {c}'.format(a=1, b='2', c=12.3))
+print('A variável {p} pode ser reutilizada: {p}.'.format(p='(oi!)'))
+
+Controlando a ordem!
+Primeiro: 1; Segundo: 2; Terceiro: 12.3
+A variável (oi!) pode ser reutilizada: (oi!).
+
+
+- Pode-se, inclusive, usar chaves de dicionários através de unpack como no exemplo a seguir:
+
+pessoa = {'nome': 'Chico', 'idade': 33}
+
+print('Olá, {nome}. Você tem {idade} anos.'.format(**pessoa))
+Olá, Chico. Você tem 33 anos.
+
+4) Alinhamento
+Com o format houve um grande avanço nas possibilidades de exibir saída em texto. A seguir, vemos como podemos indicar o espaço a ser ocupado por cada inserção:
+
+print('{0:16} | {1:5}'.format('Nome', 'Idade'))
+print('{0:16} | {1:5}'.format('Chico', 33))
+print('{0:16} | {1:5}'.format('Brás Cubas', 64))
+print('{0:16} | {1:5}'.format('Machado de Assis', '69'))
+Nome             | Idade
+Chico            |    33
+Brás Cubas       |    64
+Machado de Assis | 69   
+Veja como os valores numéricos se alinharam à direita, enquanto que as strings se alinharam à esquerda. É possível controlar o alinhamento da seguinte forma:
+
+print('{0:<8} | {1:^8} | {2:>8}'.format('Esquerda', 'Centro', 'Direita'))
+print('{0:<8} | {1:^8} | {2:>8}'.format(11, 22, 33))
+Esquerda |  Centro  |  Direita
+11       |    22    |       33
+Também é possível preencher o espaço com algum caractere:
+
+print('{0:=<8} | {1:-^8} | {2:.>8}'.format('Esquerda', 'Centro', 'Direita'))
+print('{0:=<8} | {1:-^8} | {2:.>8}'.format(11, 22, 33))
+Esquerda | -Centro- | .Direita
+11====== | ---22--- | ......33
+As informações de alinhamento e de tamanho também podem ser passadas como parâmetros:
+
+print('"{:{align}{width}}"'.format('texto', align='^', width='10'))
+"  texto   "
+
+5) Lidando com números
+Muito similar ao visto na utilização do marcador de posição:
+
+print('10 caracteres e 2 casas decimais:{:10.2f}'.format(13.579))
+10 caracteres e 2 casas decimais:     13.58
+A novidade fica na possibilidade de controlar a distância do sinal ao primeiro dígito:
+
+print('{:=5d}'.format(-42))
+print('{:=+5d}'.format(42))  # forçando o aparecimento do + em um número positivo
+-  42
++  42
+E aqui também se pode utilizar parâmetros:
+
+
+print('10 caracteres e 2 casas decimais:{:{sign}{width}.{prec}f}'.format(13.579, width=10, prec=2, sign='+'))
+10 caracteres e 2 casas decimais:    +13.58
+
+6) Lidando com datas
+O método format permite formatar facilmente objetos datetime:
+
+from datetime import datetime
+
+print('{:%Y-%m-%d %H:%M}'.format(datetime(1969, 7, 20, 22, 56)))
+1969-07-20 22:56
+
+f-strings
+Disponíveis a partir do Python 3.6, as f-strings avançaram ainda mais na flexibilidade e na legibilidade. O uso básico é bem simples, bastando colocar f (ou F) antes da string e a variável entre parênteses:
+
+nome = 'Chico'
+print(f'Nome: {nome}.')
+Nome: Chico.
+As f-strings são resolvidas em tempo de execução, de forma que podem ser passadas expressões diretamente:
+
+print(f'Nome: {nome.upper()}')
+Nome: CHICO
+No caso acima, solicitamos o método upper de strings para apresentar o nome em caixa alta. Podemos também passar operações matemáticas:
+
+print(f'{2 * 3}')
+6
+Isso é tão simples e prático que vou até mandar uma tabuada em 3 linhas de código:
+
+print('Tabuada de 2:')
+for i in range(11):
+    print(f'2 x {i:2} = {2 * i:2}')
+Tabuada de 2:
+2 x  0 =  0
+2 x  1 =  2
+2 x  2 =  4
+2 x  3 =  6
+2 x  4 =  8
+2 x  5 = 10
+2 x  6 = 12
+2 x  7 = 14
+2 x  8 = 16
+2 x  9 = 18
+2 x 10 = 20
+🙂 Veja no código acima que também é possível passar instruções de comprimento de string e alinhamento. No caso, reservei dois espaços para os números para que os mesmos ficassem alinhados à direita.
+
+Lidando com números
+Falando de experiência própria, lidar com números com f-strings foi um pouco difícil no início. Isto porque o que antes era a contagem de casas decimais passou a ser a contagem do total de dígitos do número. Vejamos o seguinte exemplo, onde apresento o método format e a f-string:
+
+num = 23.45678
+
+print('10 caracteres e 4 casas decimais:{:10.4f} (format)'.format(num))
+
+print(f'10 caracteres e 4 casas decimais:{num:{10}.{6}} (f-string)')
+10 caracteres e 4 casas decimais:   23.4568 (format)
+10 caracteres e 4 casas decimais:   23.4568 (f-string)
+Observe no código acima que o 6 indica o total de dígitos, 2 antes da casas decimais e 4 casas decimais. Isto é um pouco confuso, mas veremos uma forma mais intuitiva adiante.
+
+Quando vimos as formas de formatação anteriores, vimos que eram acrescentados zeros à direita para que o número tivesse o número de casas decimais solicito. Isto não ocorre aqui:
+
+num = 23.45
+
+print('10 caracteres e 4 casas decimais:{:10.4f} (format)'.format(num))
+
+print(f'10 caracteres e 4 casas decimais:{num:{10}.{6}} (f-string)')
+10 caracteres e 4 casas decimais:   23.4500 (format)
+10 caracteres e 4 casas decimais:     23.45 (f-string)
+Essas “estranhezas” acima podem ser contornadas facilmente. Basta usar a sintaxe de formatação que vimos no método format. Ela é reconhecida em f-strings! Assim:
+
+num = 23.45
+
+print('10 caracteres e 4 casas decimais:{:10.4f} (format)'.format(num))
+
+print(f'10 caracteres e 4 casas decimais:{num:10.4f} (f-string)')
+10 caracteres e 4 casas decimais:   23.4500 (format)
+10 caracteres e 4 casas decimais:   23.4500 (f-string)
+Alinhamento
+O que foi visto sobre alinhamento na parte do format continua valendo aqui. E ainda podemos usar a resolução em tempo de execução. Veja o exemplo:
+
+pessoas = {
+    'chico': {'nome': 'Chico', 'idade': 33, 'profissão': 'Professor'},
+    'bras': {'nome': 'Brás Cubas', 'idade': 64, 'profissão': 'Defunto-autor'},
+    'machado': {'nome': 'Machado de Assis', 'idade': 69, 'profissão': 'Escritor'},
+}
+
+print(f"{'Nome':^16} | {'Idade':^6} | {'Profissão':^15}")
+print(f"{'-'*16} | {'-'*6} | {'-'*15}")
+
+for pessoa in pessoas:
+    d = pessoas[pessoa]
+    print(f"{d['nome']:<16} | {d['idade']:^6} | {d['profissão']:>15}")
+      Nome       | Idade  |    Profissão   
+---------------- | ------ | ---------------
+Chico            |   33   |       Professor
+Brás Cubas       |   64   |   Defunto-autor
+Machado de Assis |   69   |        Escritor
+Lidando com datas
+Assim como quando utilizamos o format, também é possível facilmente formatar datas com f-strings:
+
+agora = datetime.now()
+
+print(f'{agora:%Y-%m-%d %H:%M}')
+2022-03-24 15:47
