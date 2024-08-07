@@ -11,6 +11,14 @@
 
 
 def notas(*parciais, sit='False'):
+    """
+    :param parciais: empacotamento de notas parciais, coloque tantas notas quanto necessárias.
+    :param sit: valor opcional, serve para mostrar a situação do aluno (aprovado, reprovado ou em recuperação)
+    :return notas: retorna um dicionário contendo as informações do aluno.
+
+    developed by Wesley Link
+    """
+
     menor = 0
     soma = 0
     notas = dict()
@@ -51,3 +59,4 @@ def notas(*parciais, sit='False'):
 
 
 print(notas(0, 1, 10, 5, sit=True))
+help(notas)

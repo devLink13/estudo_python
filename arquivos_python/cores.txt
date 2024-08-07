@@ -1,3 +1,71 @@
+Códigos de Cores ANSI
+Os códigos de cores ANSI são amplamente utilizados para adicionar cores e efeitos ao texto exibido no terminal. Eles são sequências de escape que o terminal interpreta para alterar a aparência do texto.
+
+Cores Básicas
+Aqui estão as cores básicas que você pode usar:
+
+Preto: \033[30m
+Vermelho: \033[31m
+Verde: \033[32m
+Amarelo: \033[33m
+Azul: \033[34m
+Magenta: \033[35m
+Ciano: \033[36m
+Branco: \033[37m
+Cores de Fundo
+Você também pode alterar a cor de fundo do texto:
+
+Fundo Preto: \033[40m
+Fundo Vermelho: \033[41m
+Fundo Verde: \033[42m
+Fundo Amarelo: \033[43m
+Fundo Azul: \033[44m
+Fundo Magenta: \033[45m
+Fundo Ciano: \033[46m
+Fundo Branco: \033[47m
+
+Efeitos de Texto
+Além das cores, você pode aplicar alguns efeitos ao texto:
+
+Resetar: \033[0m (volta ao padrão)
+Negrito: \033[1m
+Sublinhado: \033[4m
+Inverter Cores: \033[7m
+
+# como utilizar cores na formatação de textos do terminal do python
+# usando a tabela ansi
+
+"""
+
+estrutura de codigo -> \033[x; yy ;zz m
+
+x -> style (formatação do texto) 0,1,4 ou 7
+yy -> cor do texto vai do 30 ao 37
+zz -> fundo do texto vai de 40 a 47k
+
+    text                background
+ 
+
+30      black       preto          40
+31      red         vermelho       41
+32      green       verde          42
+33      yellow      amarelo        43
+34      blue        azul           44
+35      Magenta     Magenta        45
+36      cyan        ciano          46
+37      grey        cinza          47
+97      white       branco         107
+
+
+style
+
+0 none
+1 bold
+4 underline
+7 negative
+
+
+
 vermelho = '\033[31m'
 verde = '\033[32m'
 azul = '\033[34m'
@@ -9,7 +77,7 @@ preto = '\033[30m'
 
 branco = '\033[37m'
 
-restaura cor original = '\033[0;0m'
+restaura cor original = '\033[m'
 negrito = '\033[1m'
 reverso = '\033[2m'
 
