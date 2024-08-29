@@ -1,27 +1,21 @@
-# Exercício Python 102: Crie um programa que tenha uma função fatorial() que receba dois parâmetros:
-# o primeiro que indique o número a calcular e outro chamado show,
-# que será um valor lógico (opcional) indicando se será mostrado ou não na tela o processo de cálculo do fatorial.
+# Exercício Python 103: Faça um programa que tenha uma função chamada ficha(),
+# que receba dois parâmetros opcionais: o nome de um jogador e quantos gols ele marcou.
+# O programa deverá ser capaz de mostrar a ficha do jogador, mesmo que algum dado não tenha sido informado corretamente.
 
-def fatorial(num, show=False):
-    """
-    
-    """
-    fat = 1
+def ficha(nome='<desconhecido>', gols=0):
 
-    if show == False:
-        for n in range(num, 0, -1):
-            fat = n * fat
-        return fat
+    if nome.isalpha() and len(nome) > 0:
+        nome_jogador = str(nome)
+    else:
+        nome_jogador = '<desconhecido>'
 
-    elif show == True:
-        for n in range(num, 0, -1):
-            if n != 0 and n != num:
-                print(' x ', end='')
-            fat = n * fat
-            print(n, end='')
+    if gols.isnumeric() and gols != '':
+        n_gols = int(gols)
+    else:
+        n_gols = 0
 
-            if n == 1:
-                print(f' = {fat}')
+    print(f'o jogador {nome_jogador} fez {n_gols} gols no campeonato.')
 
 
-print(fatorial(3, show=True))
+ficha(input('digite o nome do jogador: '), input(
+    'digite o numero de gols do jogador: '))
