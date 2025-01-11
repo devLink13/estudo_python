@@ -15,3 +15,17 @@ print()
 
 pessoa_2 = {**pessoa, 'nome':'maria'}
 print(pessoa_2)
+
+
+itens = {
+    'pessoa 1' : {
+        'nome' : 'wesley',
+        'sobrenome': 'link'
+    },
+    'pessoa 2' : {
+        'nome' : 'laura',
+        'sobrenome': 'smaniotto'
+    },
+}
+
+print(itens)
